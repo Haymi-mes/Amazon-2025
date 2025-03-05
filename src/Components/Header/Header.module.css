@@ -1,3 +1,9 @@
+.fixed{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
 .header__container {
   background-color: #1a1a1a;
   display: flex;
@@ -56,6 +62,7 @@
 
 .search svg {
   padding: 10.5px;
+  font-size: 37px;
   background-color: #f3a847;
   color: #1a1a1a;
 }
