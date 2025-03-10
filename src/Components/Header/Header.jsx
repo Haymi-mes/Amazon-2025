@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import styles from "./Header.module.css";
 import { FaSearch, FaSortAmountDown } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
@@ -7,16 +7,16 @@ import { SlLocationPin } from "react-icons/sl";
 import { FiShoppingCart } from "react-icons/fi";
 import LowerHeader from "./LowerHeader";
 import { DataContext } from "../DataProvider/DataProvider";
+import { auth } from "../../Utility/firebase";
 
 MdOutlineShoppingCart;
 function Header() {
-  
-  const [{basket}, dispatch]=useContext(DataContext)
-  const totalitems=basket.reduce((amount, item)=>{
-    return item.amount + amount
-  },0)
+  const [{ user, basket }, dispatch] = useContext(DataContext);
+  const totalitems = basket.reduce((amount, item) => {
+    return item.amount + amount;
+  }, 0);
   console.log(basket);
-  
+
   return (
     <section className={styles.fixed}>
       <section className={styles.header__container}>
@@ -55,7 +55,7 @@ function Header() {
           {/* right side link */}
           <div className={styles.order__container}>
             {/* Language */}
-            <Link to="" className={styles.language}>
+            <Link to="/" className={styles.language}>
               <img
                 src="https://pngimg.com/uploads/flags/small/flags_PNG14580.png"
                 alt="english language logo"
@@ -64,10 +64,19 @@ function Header() {
                 <option value="">EN</option>
               </select>
             </Link>
-            <Link to="/auth">
+            <Link to={!user && "/auth"}>
               <div>
-                <p>Sign In</p>
-                <span>Account & Lists</span>
+                {user ? (
+                  <>
+                    <p>Hello {user?.email?.split("@")[0]}</p>
+                    <span onClick={() => auth.signOut()}>Sign Out</span>
+                  </>
+                ) : (
+                  <>
+                    <p>Hello, Sign In</p>
+                    <span>Account & Lists</span>
+                  </>
+                )}
               </div>
             </Link>
             {/* orders */}

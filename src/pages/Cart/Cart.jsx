@@ -9,9 +9,6 @@ import { Type } from "../../Utility/action.type";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { TiArrowSortedUp } from "react-icons/ti";
 
-
-
-
 function Cart() {
   const [{ basket }, dispatch] = useContext(DataContext);
   const total = basket.reduce((amount, item) => {
@@ -30,7 +27,7 @@ function Cart() {
       type: Type.REMOVE_FROM_BASKET,
       id,
     });
-  }; 
+  };
 
   return (
     <Layout>
@@ -84,7 +81,7 @@ function Cart() {
               <input type="checkbox" name="" id="" />
               <small>this order contains gift!</small>
             </span>
-            <Link to="/payments"> Continue to checkout</Link>
+            <Link to="/payment"> Continue to checkout</Link>
           </div>
         )}
       </section>
