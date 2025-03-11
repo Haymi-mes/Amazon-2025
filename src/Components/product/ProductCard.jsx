@@ -1,7 +1,7 @@
 import React, {useContext}from "react";
 import Rating from "@mui/material/Rating";
 import CurrencyFormat from "../CurrencyFormatter/CurrencyFormatter";
-import styles from "./product.module.css";
+import styles from "./Product.module.css";
 import { Link } from "react-router-dom";
 import { DataContext } from "../DataProvider/DataProvider";
 import { Type } from "../../Utility/action.type";
